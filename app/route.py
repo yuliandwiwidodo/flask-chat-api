@@ -43,7 +43,7 @@ def internal_server_error(error):
 # End Router Error #
 
 # Router Basic #
-@app.route("/api/", methods=["GET"])
+@app.route("/", methods=["GET"])
 def get_hello():
     return WelcomeController().index()
 
