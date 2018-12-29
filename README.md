@@ -28,22 +28,21 @@ After installing one of those editors, please make sure that you install [Editor
 
 ## Structure Project
 ```sh
-project_name/
-.... app/
-........ config/
-........ controller/
-........ library/
-........ middleware/
-........ model/
-........ __init__.py
-........ logger.py
-........ route.py
-... .editorconfig
-... .env.example
-... .gitignore
-... README.md
-... requirements.txt
-... run.py
+├── app
+│   └── config/
+│   └── controller/
+│   └── library/
+│   └── middleware/
+│   └── model/
+│   └── __init__.py
+│   └── logger.py
+│   └── route.py
+└── .editorconfig
+└── .env.example
+└── .gitignore
+└── README.md
+└── requirements.txt
+└── run.py
 ```
 
 ## Step By Step
