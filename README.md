@@ -56,7 +56,7 @@ $ cp .env.example .env
 $ virtualenv -p python3.7 virenv
 $ source virenv/bin/activate
 $ pip3.7 install -r requirements.txt
-$ python run.py
+$ python main.py
 ```
 ## Who do I talk to? ##
 
