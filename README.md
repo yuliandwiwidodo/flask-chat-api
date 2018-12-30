@@ -1,9 +1,5 @@
 # FLASK CHAT API
 
-## List Endpoint in Postman
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](-)
-
 ## Installing VIRTUALENV
 
 Please follow the steps here:
