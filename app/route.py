@@ -1,13 +1,17 @@
 from app import app
 from app.controller.welcome_controller import WelcomeController
+from app.controller.chat_controller import ChatController
 from app.library import api_helper as Helper
-from app.middleware import auth
 from flask_cors import CORS
 from app.library import dotenv
 from werkzeug.routing import PathConverter
 import blinker as _
+from flask_socketio import SocketIO
+from flask import render_template
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+socketio = SocketIO(app)
 
 # Converter Url
 class EverythingConverter(PathConverter):
@@ -43,7 +47,18 @@ def internal_server_error(error):
 # End Router Error #
 
 # Router Basic #
-@app.route("/", methods=["GET"])
+@app.route("/api/", methods=["GET"])
 def get_hello():
     return WelcomeController().index()
 
+@app.route('/')
+def sessions():
+    return ChatController().index()
+
+def messageReceived(methods=['GET', 'POST']):
+    print('message was received!!!')
+
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)

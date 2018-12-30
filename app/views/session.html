@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Flask_Chat_App</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+  <!-- <h3 style='color: #ccc;font-size: 30px;'>Tidak Ada message</h3>
+  <div class="message_holder"></div> -->
+  <form action="" method="POST" class="w3-container w3-card-4">
+      <p>      
+        <label class="w3-text-grey">Name</label>
+        <input type="text"  name="username" class="w3-input w3-border"  placeholder="User Name"/>
+      </p>
+      <p>      
+        <label class="w3-text-grey">Subject</label>
+        <textarea class="w3-input w3-border" name="message" style="height:120px" placeholder="Messages" style="resize:none"></textarea>
+      </p>
+      <p><button type="submit" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; ❯</button></p>
+      <br>
+      <div class="w3-container">
+          <ul class="w3-ul">
+            <div class="message_holder"></div>
+      </ul>
+      <br>
+  </form>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  <script type="text/javascript">
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+    socket.on( 'connect', function() {
+      socket.emit( 'my event', {
+        data: 'User Connected'
+      } )
+      var form = $( 'form' ).on( 'submit', function( e ) {
+        e.preventDefault()
+        let user_name = $( 'input[name=username]' ).val()
+        let user_input = $( 'textarea[name=message]' ).val()
+        socket.emit( 'my event', {
+          user_name : user_name,
+          message : user_input
+        } )
+        $( 'textarea[name=message]' ).val( '' ).focus()
+      } )
+    } )
+    socket.on( 'my response', function( msg ) {
+      console.log( msg )
+      if( typeof msg.user_name !== 'undefined' ) {
+        $( 'h3' ).remove()
+        $( 'div.message_holder' ).append( '<li><span class="w3-badge">'+msg.user_name+'</span> '+msg.message+'</li> ' )
+      }
+    })
+  </script>
+
+</body>
+</html>
