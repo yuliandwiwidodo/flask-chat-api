@@ -4,6 +4,7 @@
 .vscode/
 app/log/*
 virenv*
+log*
 appspec.yml
 scripts/
 .cache/

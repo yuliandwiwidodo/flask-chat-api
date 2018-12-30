@@ -60,5 +60,5 @@ def messageReceived(methods=['GET', 'POST']):
 
 @socketio.on('my event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
-    print('received my event: ' + str(json))
+    print('received my  event: ' + str(json))
     socketio.emit('my response', json, callback=messageReceived)

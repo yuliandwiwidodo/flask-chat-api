@@ -48,8 +48,11 @@ After installing one of those editors, please make sure that you install [Editor
 ## Step By Step
 Open your Terminal :
 ```sh
-$ sudo apt-get install python3.7-dev libmysqlclient-dev
-$ git clone https://github.com/yuliandwiwidodo/flask-chat-api
+$ sudo apt-get install python3.7-dev
+$ cd ~/
+$ mkdir app && cd app/ # create folder app
+$ git clone https://github.com/yuliandwiwidodo/flask-chat-api # clone
+$ mkdir log && cat > log/error.log # create log
 $ cd flask-chat-api
 $ cp .env.example .env
 $ virtualenv -p python3.7 virenv
